@@ -18,12 +18,15 @@ const HALF_LIFE_PERIOD = 5730;
  *
  */
 function dateSample(input = null) {
-  if (typeof input === 'string' && !isFinite(+input)) {
+  if (
+    typeof input !== 'string'
+    || isNaN(+input)
+    || +input < 1
+    || +input >= 15
+  ) {
     return false
   }
-  input = Math.ceil(+input)
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+  return Math.ceil((Math.log(MODERN_ACTIVITY / +input)) / (0.693 / HALF_LIFE_PERIOD))
 }
 
 module.exports = {

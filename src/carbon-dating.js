@@ -17,7 +17,11 @@ const HALF_LIFE_PERIOD = 5730;
  * dateSample('WOOT!') => false
  *
  */
-function dateSample(/* sampleActivity */) {
+function dateSample(input = null) {
+  if (typeof input === 'string' && !isFinite(+input)) {
+    return false
+  }
+  input = Math.ceil(+input)
   throw new NotImplementedError('Not implemented');
   // remove line with error and write your code here
 }
